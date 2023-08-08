@@ -639,3 +639,189 @@ TypeScript类型定义文件
 </v-click>
 
 ---
+
+# 打包 
+
+为什么需要打包?
+
+<v-clicks>
+
+- 可以将多个资源文件合并成一个或多个文件
+  - 支持CommonJS等模块
+  - 减少网络请求次数, 提高网站的加载速度
+- 打包工具都会提供插件能力。打包的过程也是构建的过程
+  - 编译代码至目标代码, 使用最新的JS语法, 兼容低版本浏览器
+  - 可以在构建流程中进行一些额外的资源处理
+    - 压缩资源文件
+    - lint代码规范
+    - 其它自动化功能
+- 本质还是浏览器发展速度跟不上前端技术发展速度
+  - 为了开发大型复杂项目，前端需要利用工具链支持一些浏览器原生没有支持的新功能
+
+</v-clicks>
+
+---
+
+# 打包工具 - Webpack
+Webpack是一个用于现代JavaScript应用程序的静态模块打包工具。它可以将你项目中的每一个模块组合成一个或多个bundle。
+<v-click>
+
+- Loader
+- Plugin
+- webpack-dev-server
+
+</v-click>
+
+---
+layout: two-cols
+---
+
+# Loader
+Webpack默认本身只能处理JavaScript和JSON文件。如果需要处理图片，css文件等其它类型的文件，就需要安装对应的loader进行转换。
+<v-click>
+
+- 图片文件 
+  - `url-loader`
+  - `file-loader`
+- 样式文件 
+  - `css-loader`
+  - `style-loader`
+- ts文件 
+  - `babel-loader`
+  - `ts-loader`
+
+</v-click>
+
+::right::
+
+<v-click>
+
+<div class="mt-16 ml-4">
+
+  ```js
+  // webpack.config.js
+  const path = require('path');
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+      ],
+    },
+  };
+  ```
+
+</div>
+
+</v-click>
+---
+
+# Plugin
+loader用于转换某些类型的模块，而plugin则可以扩展webpack的能力
+<v-click>
+
+- 打包优化
+- 资源管理
+- 注入环境变量
+- ...
+
+</v-click>
+
+<v-click>
+
+```js
+// webpack.config.js
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack'); 
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+	  filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
+};
+```
+
+</v-click>
+
+---
+
+# webpack-dev-server
+基于express的本地开发服务器
+- 为webpack打包生成的资源文件提供Web服务
+- 实时刷新页面, 模块热替换(HMR)
+
+<v-click>
+
+```bash
+npm install --save-dev webpack-dev-server
+```
+```json
+// package.json
+{
+  "scripts": {
+    "dev1": "webpack serve",
+    "dev2": "webpack-dev-server"
+  }
+}
+```
+
+```js
+// webpack.config.js
+module.exports = {
+  devServer: {
+    // 一些dev-server的配置项
+  },
+};
+```
+
+</v-click>
+
+---
+
+# Rollup
+Rollup另一个JS模块打包工具
+#### 与Webpack的区别
+- Rollup推荐使用ESM模块，并且默认只能导入ESM模块，需要通过安装Plugin来支持导入现有的CommonJS模块
+  ```js
+  // rollup.config.js
+  import commonjs from '@rollup/plugin-commonjs';
+
+  export default {
+    input: 'src/index.js',
+    output: {
+      dir: 'output',
+      format: 'cjs'
+    },
+    plugins: [commonjs()]
+  };
+  ```
+- Rollup更适合打包库，Webpack则更适合打包应用。
+  - Rollup打包出的产物比Webpack小；Webpack打包时，会注入Webpack相关的工具函数
+
+---
+
+# 其它工具
+![bundler](/bundler.png)
+
+<style>
+  .slidev-layout h1 + p {
+    opacity: 1;
+    height: 90%;
+  }  
+  img {
+    height: 100%;
+  }
+</style>
+
+---
