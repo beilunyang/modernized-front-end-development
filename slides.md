@@ -120,7 +120,7 @@ transition: slide-up
 
 ---
 layout: image-right
-image: ./assets/unsplash_code.jpg
+image: /unsplash_code.jpg
 ---
 # 模块化
 - <Link to="8" title="CommonJS" />
@@ -267,13 +267,18 @@ image: ./assets/unsplash_code.jpg
 ```
 
 ---
+
 # ESM
 ESM是ECMAScript Modules的缩写。
 <v-clicks>
+
 - ES6带来的新语法，是JavaScript语言层面提供的模块化规范
 - 适用于浏览器端,服务器端, 和其它任何JavaScript运行时
+
 </v-clicks>
+
 ---
+
 ---
 layout: two-cols
 ---
@@ -354,7 +359,7 @@ module2.m2();
 
 ---
 layout: image-right
-image: ./assets/unsplash_electron.avif
+image: /unsplash_electron.avif
 ---
 
 # 包管理器
@@ -365,10 +370,272 @@ image: ./assets/unsplash_electron.avif
 ---
 # npm
 - NodeJS官方默认的包管理器，安装NodeJS时，会自动安装
-- 一般进行前端项目开发时，都会先通过npm init 进行初始化，将当前目录作为项目的更目录，并创建package.json文件
+- 创建新项目时
+  - npm init  // 将当前目录作为项目的根目录，并创建package.json
 - 运行别人的前端项目
   - npm install
-  - npm run <CMD>, 一般
+  - npm run \<CMD\>
+
+---
+---
+layout: two-cols
+---
+
+# npm - package.json
+
+<v-click>
+
+- 前端项目的配置文件, 定义了项目的配置信息
+
+</v-click>
+
+<v-click>
+
+- 一些字段含义
+  - name: 项目名称
+  - scripts: 自定义脚本. 可通过`npm run <CMD>`运行
+  - dependencies: 项目运行所依赖的模块
+  - devDependencies: 项目开发所需要的模块
+  - peerDependencies: 要求宿主环境提供peerDependencies中的包
+  - 更多字段详见: [npm docs](https://docs.npmjs.com/cli/v9/configuring-npm/package-json)
+
+</v-click>
+
+::right::
+
+<v-click>
+
+<div class="mt-15 ml-8">
+```json
+  // package.json
+  {
+    "name": "modernized-front-end-development",
+    "scripts": {
+      "build": "slidev build",
+      "dev": "slidev --open",
+      "export": "slidev export"
+    },
+    "dependencies": {
+      "@mrdrogdrog/optional": "^1.2.1",
+      "@slidev/cli": "^0.42.5",
+      "@slidev/theme-default": "latest",
+      "@slidev/theme-seriph": "latest"
+    }
+  }
+```
+</div>
+
+</v-click>
+
+---
+
+# npm - 常用命令
+<v-clicks>
+
+- 
+  ```bash
+  npm install # 根据package.json安装依赖
+
+  npm install <--save-dev> <pkg-name> # 安装特定依赖
+
+  npm uninstall <--save-dev> <pkg-name> # 卸载特定依赖
+
+  npm run <cmd> # 执行package.json中配置的scripts
+
+  npm config set registry <registry_addr> # 设置镜像仓库地址
+  ```
+- 快速切换npm仓库地址
+  ```bash
+  npm i -g nrm
+
+  nrm add safeheron https://safeheron.xxxx.com
+
+  nrm use safeheron
+  ```
+
+</v-clicks>
+
+---
+
+# yarn
+yarn是facebook推出的另一个包管理器。之所以推出yarn，主要是为了解决早期npm的一些问题:
+- 可靠性。不同机器和用户安装依赖项时安装的最终依赖版本可能不一致
+  - yarn提供了yarn-lock.json文件，用来锁定依赖的版本
+- 性能
+  - yarn提供离线缓存，多次获取相同的依赖会从缓存中取，安装速度更快
+
+---
+layout: two-cols
+--- 
+# yarn - 常用命令
+- 
+  ```bash
+  yarn # 根据package.json安装依赖
+  yarn add <--dev> <pkg_name>  # 安装特定依赖
+  yarn remove <--dev> <pkg_name> # 安装特定依赖
+  yarn config set registry <registry_addr> # 设置镜像仓库地址
+  ```
+::right::
+<div class="ml-8">
+
+# yarn - 其它功能
+  - workspace。可以在一个项目下，创建和管理多个包
+  - plugin。可以通过编写plugin，添加新的依赖解析器，接收器，连接器，指令
+
+</div>
+
+---
+
+# pnpm
+pnpm是另一个包管理器。比起npm和yarn, 它有如下的一些优势:
+- 节省磁盘空间
+- 安装速度比其它包管理器更快
+- 可以管理Node.js环境
+
+---
+
+# 三者功能对比
+![pnpm-vs-yarn-vs-npm](/pnpm_vs_yarn_vs_npm.png)
+
+<style>
+  .slidev-layout h1 + p {
+    opacity: 1;
+    height: 90%;
+  }  
+  img {
+    height: 100%;
+  }
+</style>
+
+---
+layout: image-right 
+image: /unsplash_es6.avif
+class: my-content
+---
+
+# ES6与TypeScript
+- <Link to="" title="ES6(ES2015)" />
+- <Link to="" title="TypeScript" />
+
+<style>
+  .my-content {
+    background-color: red;
+  }
+  .my-content + .w-full {
+    background-color: red;
+    background-position: 0 center !important;
+  }
+</style>
+
+---
+
+# ES6(ES2015)
+ES6就是ECMAScript 6， 是新一代的JavaScript标准，由于是2015年发布的，也称ES2015。  
+之后每年发布的新标准，ES2016, ES2017等也称为ES6.
+
+<v-click>
+
+#### ES6提供了一系列新的语法和API
+- let, const
+- 变量解构
+- 新的数据类型，set和map
+- promise, async await
+- class
+- ...
+
+</v-click>
+<v-click>
+
+[ES6入门教程](https://es6.ruanyifeng.com/)
+
+</v-click>
+
+---
+
+# Babel
+Babel是一个JavaScript编译器，主要用于将采用 ECMAScript 2015+ 语法编写的代码转换为向后兼容的 JavaScript 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。
+<v-click>
+
+```bash
+babel src --out-dir lib
+```
+</v-click>
+
+<v-click>
 
 
+<div class="mt-4 mb-2">
 
+#### 支持的功能 
+
+</div>
+
+- 语法转换
+- 通过polyfill(core-js库)在目标环境添加缺失的API
+- 源码转换
+- 自定义插件
+
+</v-click>
+
+---
+
+# TypeScript
+TypeScript是微软开发的编程语言，是JavaScript的一个超集，扩展了JavaScript，提供了静态类型检测。
+
+<v-click>
+
+#### 优点:
+
+- 静态类型 
+  - 在编译期，就能发现类型相关的问题
+  - 类型可以增加代码的可读性，通过类型信息可以帮助我们快速理解变量，函数的作用
+  - 编辑器等工具可以通过类型信息，生成代码提示，帮助我们理解代码，增强开发体验。
+
+</v-click>
+
+<v-click>
+
+- 完全兼容JavaScript
+  -  一个TS应用能够直接使用已经存在的JS脚本。编译后的TS脚本也可以在JavaScript应用中使用
+
+</v-click>
+---
+
+# TSC
+由于现在的浏览器，NodeJS运行时不能直接运行TS，所以需要将TS编译成JS。  
+TSC就是TypeScript的编译器，将TS编译成JS
+
+```bash
+tsc src/**/*.ts --outDir lib
+```
+
+---
+layout: two-cols
+---
+
+# .d.ts文件
+TypeScript类型定义文件
+- 由于JavaScript没有类型信息，ts导入js文件时，会获取不到js的类型信息。  
+- 为了让ts使用js库时，依旧能够获得静态类型带来的优势，就需要为js库提供类型定义文件(.d.ts文件)。
+- TODO: 补充几张无类型提示的图片
+
+::right::
+
+<v-click>
+
+<div class="ml-4">
+
+# 获取.d.ts文件
+如何?
+- .d.ts文件可以手工编写，如果是由ts编译成的js库，可以在ts编译时，自动生成.d.ts文件
+- 现在npm库基本都会在包中提供.d.ts文件，如果没有提供。可以通过npm安装对应的@types库
+  ```bash
+  # 安装lodash库的类型定义文件
+  npm i -D @types/lodash
+  ```
+
+</div>
+
+</v-click>
+
+---
