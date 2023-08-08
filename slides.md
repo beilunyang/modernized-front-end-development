@@ -825,3 +825,123 @@ Rollup另一个JS模块打包工具
 </style>
 
 ---
+
+# 前端框架
+- React
+- Vue
+- Angular
+- Svelte
+
+---
+
+# React
+
+React是facebook开源的用来构建前端界面的JavaScript库
+
+<v-click>
+
+- 组件化开发
+- 声明式编程
+- 虚拟DOM
+- JSX（JavaScript XML）
+
+</v-click>
+
+--- 
+
+# 相比JQuery的优势
+- 数据驱动。 `UI = render(state)`
+  - 只需关注组件和状态, 无需再关注如何操作DOM
+- 灵活。
+  - JSX, 把HTML与JS结合，操作起来更加灵活
+- 性能。
+  - 开发大型应用时，React虚拟DOM能减少DOM的操作，优化应用的性能
+
+---
+
+# React-Router
+React只关注View层。一个应用一般会有多个页面，所以需要React-Router库来实现页面路由
+```js
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+```
+
+---
+layout: two-cols
+---
+
+# Redux
+Redux是JavaScript应用的状态容器，提供可预测的状态管理。  
+
+<v-click>
+
+#### 使用场景
+- 应用中有很多state在多个组件中需要使用
+- 应用state会随着时间的推移而频繁更新
+- 更新state的逻辑复杂
+- 中型和大型代码量的应用，很多人协同开发
+
+</v-click>
+
+::right::
+
+<v-click>
+
+<div class="mt-13">
+
+![redux](/redux.png)
+
+</div>
+
+</v-click>
+
+---
+layout: two-cols
+---
+
+# React问题 - CSR
+<v-click>
+
+CSR(client-side rendering/客户端渲染)
+
+</v-click>
+
+<v-click>
+
+- 不利于SEO
+- 首屏渲染时间（FCP）长, 出现短暂白屏
+
+</v-click>
+
+::right::
+<v-click>
+
+# 解决方案 - SSR
+SSR(server-side rendering/服务端渲染)
+
+![csr_ssr](/csr_ssr.png)
+
+</v-click>
+
+---
+
+# NextJS
