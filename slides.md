@@ -617,7 +617,8 @@ layout: two-cols
 TypeScript类型定义文件
 - 由于JavaScript没有类型信息，ts导入js文件时，会获取不到js的类型信息。  
 - 为了让ts使用js库时，依旧能够获得静态类型带来的优势，就需要为js库提供类型定义文件(.d.ts文件)。
-- TODO: 补充几张无类型提示的图片
+
+![not_found_dts](/not_found_dts.png)
 
 ::right::
 
@@ -945,3 +946,218 @@ SSR(server-side rendering/服务端渲染)
 ---
 
 # NextJS
+NextJS是React生态中的主流的SSR框架。
+<v-click>
+
+- 零配置，开箱即用
+- 不仅支持SSR，也支持SSG（构建时预渲染）
+- 良好的支持TypeScript支持
+- 基于文件系统的路由。每个`pages`目录下的组件就是一条路由
+- API路由。不仅可以只作为Node中间层，也可以作为API服务，提供后端功能
+- ...
+
+</v-click>
+
+<v-click>
+
+可以把NextJS看作全栈框架，使用它开发前后端功能，并且无需进行复杂配置
+
+</v-click>
+
+---
+
+# 跨端开发
+随着前端技术的不断发展，前端社区开始出现“大前端”的概念。
+
+<v-clicks>
+
+- 传统前端只需要专注于Web开发
+- "大前端"则扩展了前端的范围，把任何用户可交互的UI层都称为前端, 如Android, IOS, 桌面端, 嵌入式界面...
+- 甚至任何可以使用JavaScript开发的内容都归到前端
+- 需要有更广泛的知识和技能储备，能够处理更多平台和设备上的应用开发
+
+</v-clicks>
+
+---
+
+# 服务端解决方案 - NodeJS
+NodeJS是一个基于Chrome V8引擎的JavaScript运行时
+
+<v-clicks>
+
+- 非阻塞和异步。 采用事件驱动，非阻塞I/O模型，使得NodeJS能处理大量并发请求而不会阻塞进程
+- 单线程。NodeJS只有一个主JS线程来执行JS代码。当遇到I/O请求时，会通过事件循环，委推给libuv(c++)来操作，而不会阻塞后续JS代码的执行
+
+</v-clicks>
+
+<v-click>
+
+  <div class="img-wrapper">
+
+  ![nodejs](/nodejs.png)
+
+  ![nodejs2](/nodejs2.png)
+
+  </div>
+
+</v-click>
+
+<style>
+.img-wrapper  {
+  display: flex;
+
+  p:first-child {
+    flex: 0.8;
+  }
+
+  p:last-child {
+    flex: 1;
+  }
+}
+
+img {
+  height: 100%;
+}
+
+</style>
+
+---
+
+# 移动端解决方案 - React Native
+React Native是一个使用React和应用平台的原生功能来构建跨平台应用的框架。
+<v-click>
+
+- 支持跨平台开发
+- RN组件最终会映射为原生组件
+- 通过Bridge(Native Module)访问平台原生的API
+
+</v-click>
+
+<v-click>
+
+![reactnative](/react_native.png)
+
+</v-click>
+
+<style>
+  img {
+    height: 300px;
+  }
+</style>
+
+---
+
+# 小程序解决方案 - Taro
+Taro是京东推出的跨端跨框架解决方案，支持使用React/Vue等框架来开发小程序/H5/RN应用
+<v-clicks>
+
+- 重运行时。在各小程序平台上模拟出了一套类Web运行时（BOM和DOM），可以直接运行React，Vue，以及为web端开发的库和组件
+- 虽然支持的平台比较多，但建议只用来开发多端小程序和H5
+
+</v-clicks>
+
+<v-click>
+
+![taro](/taro.png)
+
+</v-click>
+
+<style>
+  img {
+    height: 300px;
+  }
+</style>
+
+---
+
+# 桌面端解决方案 - Electron
+<v-click>
+Electron是一款利用JavaScript，HTML, CSS, NodeJS构建跨平台桌面应用的框架。
+
+- 跨平台。支持macOS, windows, linux
+- 强大的生态系统。Electron内置chromium和nodejs， 所以能够直接复用Web以及NodeJS生态
+- 开发简单高效。比起QT等UI框架，Web技术开发UI，开发更加简单高效。
+
+</v-click>
+
+<v-click>
+
+<div class="mt-4">
+
+#### 存在的问题
+
+- 应用体积大。由于内置了chromium和nodejs，应用体积过大
+- 内存占用高。由于需要同时运行chromium和nodejs, 比原生应用占用更多的内存
+- 性能。由于运行在一个额外的中间层(chromium)上，比起原生应用，性能有所下降
+
+</div>
+
+</v-click>
+
+---
+
+# 桌面端解决方案 - Tauri
+<v-click>
+
+Tauri是另一款利用JavaScript, HTML, CSS，Rust构建跨平台桌面应用的框架。相比Electron, 它有如下优点：
+- 应用体积小。
+  - 使用不同操作系统自带的WebView渲染UI界面，不内置chromium，以及NodeJS。
+- 内存占用低。
+
+</v-click>
+
+<v-click>
+
+
+<div class="mt-4">
+
+#### 存在的问题
+- 兼容性。不同系统的WebView渲染结果不一致，需要自己处理兼容性
+- 开发成本比Electron高。底层后端使用Rust, 而非NodeJS, 无法直接使用NodeJS生态。
+
+</div>
+
+</v-click>
+
+---
+
+# 前端技术栈推荐
+
+- <span>语言:</span> TypeScript
+- <span>打包:</span> Webpack
+- <span>Web端:</span> React + Redux + React-Router
+- <span>服务端:</span> NodeJS + NestJS
+- <span>桌面端:</span> React + Electron
+- <span>小程序:</span> React + Taro
+- <span>移动端:</span> React Native + Redux + React-Navigation
+
+<style>
+  li span {
+    width: 70px;
+    display: inline-block;
+  }
+</style>
+
+---
+
+# 前端开发流程
+
+![dev-flow](/dev-flow.svg)
+
+<style>
+  .slidev-layout h1 + p {
+    opacity: 1;
+  }
+</style>
+
+---
+layout: end
+---
+
+<style>
+  .end {
+    background: url('https://source.unsplash.com/collection/94734566/1920x1080') no-repeat center center;
+    background-size: cover;
+    font-size: 2.5rem !important;
+  } 
+</style>
