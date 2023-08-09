@@ -20,18 +20,6 @@ modernized fontend development
 ---
 transition: fade-out
 ---
-# 什么是前端开发
-<v-clicks>
-
-- HTML/CSS/JavaScript
-- jQuery
-- Web浏览器
-- 切图仔
-- 写CSS样式
-- ......
-
-</v-clicks>
---- 
 
 # jQuery时期
 
