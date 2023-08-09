@@ -4,24 +4,18 @@ background: https://source.unsplash.com/collection/94734566/1920x1080
 class: text-center
 highlighter: shiki
 lineNumbers: false
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
+info: false
 drawings:
   persist: false
 transition: slide-left
-title: Welcome to Slidev
+title: 现代化前端开发 
+download: true
+exportFilename: 'modernized-fontend-development.pdf'
 ---
 
 # 现代化前端开发
 
 modernized fontend development
-
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
 
 ---
 transition: fade-out
@@ -33,7 +27,7 @@ transition: fade-out
 - jQuery
 - Web浏览器
 - 切图仔
-- 一定会写CSS
+- 写CSS样式
 - ......
 
 </v-clicks>
