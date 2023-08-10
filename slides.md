@@ -1105,6 +1105,7 @@ Tauri是另一款利用JavaScript, HTML, CSS，Rust构建跨平台桌面应用�
 # 前端技术栈推荐
 
 - <span>语言:</span> TypeScript
+- <span>包管理器:</span> npm
 - <span>打包:</span> Webpack
 - <span>Web端:</span> React + Redux + React-Router
 - <span>服务端:</span> NodeJS + NestJS
@@ -1112,9 +1113,17 @@ Tauri是另一款利用JavaScript, HTML, CSS，Rust构建跨平台桌面应用�
 - <span>小程序:</span> React + Taro
 - <span>移动端:</span> React Native + Redux + React-Navigation
 
+<v-click>
+
+[Jamstack](https://jamstack.org/)
+
+[2022.stateofjs](https://2022.stateofjs.com/zh-Hans/)
+
+</v-click>
+
 <style>
   li span {
-    width: 70px;
+    width: 80px;
     display: inline-block;
   }
 </style>
