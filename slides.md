@@ -10,7 +10,7 @@ drawings:
 transition: slide-left
 title: 现代化前端开发 
 download: true
-exportFilename: 'modernized-fontend-development.pdf'
+exportFilename: '现代化前端开发.pdf'
 ---
 
 # 现代化前端开发
@@ -110,11 +110,6 @@ image: /unsplash_code.jpg
 - <Link to="" title="UMD" />
 - <Link to="" title="ESM" />
 
-<style>
-  img {
-    borde-radius: 8px;
-  }
-</style>
 ---
 
 # CommonJS - 规范定义
