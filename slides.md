@@ -10,7 +10,7 @@ drawings:
 transition: slide-left
 title: 现代化前端开发 
 download: true
-exportFilename: '现代化前端开发.pdf'
+exportFilename: '现代化前端开发'
 ---
 
 # 现代化前端开发
