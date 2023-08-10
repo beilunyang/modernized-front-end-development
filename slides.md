@@ -260,8 +260,6 @@ ESM是ECMAScript Modules的缩写。
 </v-clicks>
 
 ---
-
----
 layout: two-cols
 ---
 
@@ -346,10 +344,11 @@ image: /unsplash_electron.avif
 
 # 包管理器
 - <Link to="20" title="npm" />
-- <Link to="" title="yarn" />
-- <Link to="" title="pnpm" />
+- <Link to="22" title="yarn" />
+- <Link to="25" title="pnpm" />
 
 ---
+
 # npm
 - NodeJS官方默认的包管理器，安装NodeJS时，会自动安装
 - 创建新项目时
@@ -358,7 +357,6 @@ image: /unsplash_electron.avif
   - npm install
   - npm run \<CMD\>
 
----
 ---
 layout: two-cols
 ---
@@ -1012,6 +1010,7 @@ React Native是一个使用React和应用平台的原生功能来构建跨平台
 - 支持跨平台开发
 - RN组件最终会映射为原生组件
 - 通过Bridge(Native Module)访问平台原生的API
+- 热更新
 
 </v-click>
 
